@@ -1,115 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 30px;
-    background-color: #eeeeee;
+  background: #000;
+  font-family: 'Tektur', sans-serif;
+  overflow-x: hidden;
 }
 
-.character-sheet {
-    max-width: 900px;
-    margin: auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
+#sheet {
+  position: relative;
+  width: 1488px;
+  height: 2266px;
+  transform-origin: top left;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1488px;
+  height: 2266px;
+  display: block;
 }
 
-header h1 {
-    margin-bottom: 5px;
+/* ── All the rest of your element styles stay exactly the same ── */
+.stat-display {
+  position: absolute;
+  color: white;
+  font-family: 'Tektur', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
 }
 
-header p {
-    margin-top: 0;
-    color: #666666;
+.stat-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: 'Tektur', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
 }
 
-.combat {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
+.stat-btn:active { opacity: 0.5; }
+
+.effect-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: 'Tektur', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
 }
 
-.stat-box {
-    flex: 1;
-    padding: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    text-align: center;
+.effect-btn.active { color: #00ffcc; }
+.effect-btn:active { opacity: 0.5; }
+
+#hp-display   { font-size: 140px; width: 230px; left: 110px;   top: 295px; }
+#temp-display { font-size: 140px; width: 230px; left: 1145px; top: 295px; }
+#ac-display   { font-size: 140px; width: 230px; left: 110px;   top: 690px; }
+#tech-display { font-size: 140px; width: 230px; left: 1145px; top: 690px; }
+
+#hp-plus5  { width: 118px; height: 118px; font-size: 66px; left: 415px; top: 248px; }
+#hp-plus1  { width: 118px; height: 118px; font-size: 66px; left: 585px; top: 248px; }
+#hp-minus1 { width: 118px; height: 118px; font-size: 66px; left: 585px; top: 410px; }
+#hp-minus5 { width: 118px; height: 118px; font-size: 66px; left: 415px; top: 410px; }
+
+#temp-plus1  { width: 118px; height: 118px; font-size: 66px; left: 950px; top: 248px; }
+#temp-minus1 { width: 118px; height: 118px; font-size: 66px; left: 950px; top: 416px; }
+#temp-plus5  { width: 118px; height: 118px; font-size: 66px; left: 785px; top: 248px; }
+#temp-minus5 { width: 118px; height: 118px; font-size: 66px; left: 785px; top: 412px; }
+
+
+#tech-plus1  { width: 118px; height: 118px; font-size: 66px; left: 950px;  top: 650px; }
+#tech-minus1 { width: 118px; height: 118px; font-size: 66px; left: 950px; top: 815px; }
+
+#ac-infused   { width: 280px; height: 60px; font-size: 58px; left: 496px; top: 642px; }
+#ac-armshield { width: 280px; height: 60px; font-size: 68px; left: 496px; top: 746px; }
+#ac-barrier   { width: 280px; height: 60px; font-size: 48px; left: 486px; top: 870px; }
+
+#needle-atk     { font-size: 56px; width: 100px; left: 639px;  top: 1078px; }
+#needle-dmg     { font-size: 56px; width: 100px; left: 1003px;  top: 1078px; }
+#needle-infused { font-size: 48px; width: 200px; height: 70px; left: 1152px; top: 1078px; }
+
+#holdout-atk     { font-size: 56px; width: 100px; left: 405px;  top: 1291px; }
+#holdout-dmg     { font-size: 56px; width: 100px; left: 781px;  top: 1291px; }
+#holdout-infused { font-size: 48px; width: 200px; height: 70px; left: 1151px; top: 1291px; }
+
+#blaster-atk     { font-size: 56px; width: 100px; left: 406px;  top: 1623px; }
+#blaster-dmg     { font-size: 56px; width: 100px; left: 781px;  top: 1623px; }
+#blaster-infused { font-size: 48px; width: 200px; height: 70px; left: 1151px; top: 1626px; }
+
+.ammo-row {
+  position: relative;
+  display: flex;
+  gap: 10px;
 }
 
-.stat-box h2 {
-    margin-top: 0;
-    font-size: 18px;
+.ammo-box {
+  width: 155px;
+  height: 81px;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 1px;
 }
 
-.hp-value {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 15px 0;
+#blaster-ammo .ammo-box {
+  width: 78px;
+  height: 95px;
 }
 
-.big-number {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 20px 0;
+#blaster-ammo {
+  gap: 3.5px;
 }
 
-button {
-    padding: 8px 12px;
-    margin: 3px;
-    border: 1px solid #bbbbbb;
-    border-radius: 5px;
-    background-color: #f8f8f8;
-    cursor: pointer;
+.ammo-box.spent { background: rgba(0, 0, 0, 0.55); }
+
+#holdout-ammo { left: 88px;  top: 1421px; }
+#blaster-ammo { left: 89px;  top: 1660px; }
+
+.counter-box {
+  position: absolute;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-button:hover {
-    background-color: #e5e5e5;
+.counter-val {
+  color: white;
+  font-family: 'Tektur', sans-serif;
+  font-weight: 600;
+  font-size: 72px;
 }
 
-.abilities {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    margin-bottom: 30px;
+.counter-label {
+  position: absolute;
+  color: white;
+  font-family: 'Tektur', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.ability {
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-}
+#counter-arkanian { width: 300px; height: 200px; left: 122px;   top: 1892px; }
+#counter-potent   { width: 300px; height: 200px; left: 599px;  top: 1892px; }
+#counter-biochem  { width: 300px; height: 200px; left: 1073px; top: 1892px; }
 
-.ability strong,
-.ability span,
-.ability small {
-    display: block;
-}
-
-.ability span {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 8px 0;
-}
-
-.ability small {
-    color: #666666;
-}
-
-.effects {
-    border-top: 1px solid #cccccc;
-    padding-top: 20px;
-}
-
-.effects h2 {
-    margin-top: 0;
-}
-
-.no-effects {
-    color: #777777;
-}
+.counter-label:nth-of-type(1) { width: 300px; left: 60px;   top: 1650px; }
+.counter-label:nth-of-type(2) { width: 300px; left: 594px;  top: 1650px; }
+.counter-label:nth-of-type(3) { width: 300px; left: 1128px; top: 1650px; }
