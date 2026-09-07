@@ -2,18 +2,110 @@
 <html>
 
 <head>
-    <title>My D&D Character</title>
-
+    <title>D&D Character Sheet</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>My D&D Character</h1>
+    <main class="character-sheet">
 
-    <p>This is my character sheet.</p>
+        <header>
+            <h1>My Character</h1>
+            <p>Paladin — Level 7</p>
+        </header>
 
-    <button onclick="sayHello()">Click me</button>
+        <section class="combat">
+
+            <div class="stat-box hp-box">
+                <h2>Hit Points</h2>
+
+                <div class="hp-value">
+                    <span id="current-hp">63</span>
+                    /
+                    <span id="max-hp">63</span>
+                </div>
+
+                <div class="hp-buttons">
+                    <button onclick="changeHP(-5)">−5</button>
+                    <button onclick="changeHP(-1)">−1</button>
+                    <button onclick="changeHP(1)">+1</button>
+                    <button onclick="changeHP(5)">+5</button>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <h2>Temp HP</h2>
+                <div class="big-number" id="temp-hp">0</div>
+
+                <button onclick="changeTempHP(-1)">−1</button>
+                <button onclick="changeTempHP(1)">+1</button>
+                <button onclick="changeTempHP(5)">+5</button>
+            </div>
+
+            <div class="stat-box">
+                <h2>Armor Class</h2>
+                <div class="big-number" id="armor-class">19</div>
+            </div>
+
+        </section>
+
+
+        <section class="abilities">
+
+            <div class="ability">
+                <strong>STR</strong>
+                <span>18</span>
+                <small>+4</small>
+            </div>
+
+            <div class="ability">
+                <strong>DEX</strong>
+                <span>14</span>
+                <small>+2</small>
+            </div>
+
+            <div class="ability">
+                <strong>CON</strong>
+                <span>16</span>
+                <small>+3</small>
+            </div>
+
+            <div class="ability">
+                <strong>INT</strong>
+                <span>10</span>
+                <small>+0</small>
+            </div>
+
+            <div class="ability">
+                <strong>WIS</strong>
+                <span>12</span>
+                <small>+1</small>
+            </div>
+
+            <div class="ability">
+                <strong>CHA</strong>
+                <span>20</span>
+                <small>+5</small>
+            </div>
+
+        </section>
+
+
+        <section class="effects">
+
+            <h2>Active Effects</h2>
+
+            <div id="effects-list">
+                <p class="no-effects">No active effects.</p>
+            </div>
+
+            <button onclick="addTestEffect()">Add Test Effect</button>
+
+        </section>
+
+    </main>
+
 
     <script src="script.js"></script>
 
