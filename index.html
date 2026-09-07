@@ -1,114 +1,106 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>D&D Character Sheet</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Dr. Eryk Veranis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div id="sheet">
+    <img id="bg" src="background.png" alt="character sheet" />
 
-    <main class="character-sheet">
+    <!-- HP -->
+    <div class="stat-display" id="hp-display">22</div>
+    <button class="stat-btn" id="hp-plus5"  onclick="changeStat('hp', 5)">+5</button>
+    <button class="stat-btn" id="hp-plus1"  onclick="changeStat('hp', 1)">+1</button>
+    <button class="stat-btn" id="hp-minus1" onclick="changeStat('hp', -1)">-1</button>
+    <button class="stat-btn" id="hp-minus5" onclick="changeStat('hp', -5)">-5</button>
 
-        <header>
-            <h1>My Character</h1>
-            <p>Paladin — Level 7</p>
-        </header>
+    <!-- TEMP -->
+    <div class="stat-display" id="temp-display">0</div>
+    <button class="stat-btn" id="temp-plus1"  onclick="changeStat('temp', 1)">+1</button>
+    <button class="stat-btn" id="temp-minus1" onclick="changeStat('temp', -1)">-1</button>
+    <button class="stat-btn" id="temp-plus5"  onclick="changeStat('temp', 5)">+5</button>
+    <button class="stat-btn" id="temp-minus5" onclick="changeStat('temp', -5)">-5</button>
 
-        <section class="combat">
+    <!-- AC -->
+    <div class="stat-display" id="ac-display">13</div>
+    <button class="effect-btn" id="ac-infused"  onclick="toggleEffect('infused')">INFUSED</button>
+    <button class="effect-btn" id="ac-armshield" onclick="toggleEffect('armshield')">SHIELD</button>
+    <button class="effect-btn" id="ac-barrier"  onclick="toggleEffect('barrier')">TACT.BARRIER</button>
 
-            <div class="stat-box hp-box">
-                <h2>Hit Points</h2>
+    <!-- TECH -->
+    <div class="stat-display" id="tech-display">11</div>
+    <button class="stat-btn" id="tech-plus1"  onclick="changeStat('tech', 1)">+1</button>
+    <button class="stat-btn" id="tech-minus1" onclick="changeStat('tech', -1)">-1</button>
 
-                <div class="hp-value">
-                    <span id="current-hp">63</span>
-                    /
-                    <span id="max-hp">63</span>
-                </div>
+    <!-- INJECTION NEEDLE -->
+    <div class="stat-display" id="needle-atk">+4</div>
+    <div class="stat-display" id="needle-dmg">2</div>
+    <button class="effect-btn infuse-toggle" id="needle-infused" onclick="toggleInfuse('needle')">INFUSED</button>
 
-                <div class="hp-buttons">
-                    <button onclick="changeHP(-5)">−5</button>
-                    <button onclick="changeHP(-1)">−1</button>
-                    <button onclick="changeHP(1)">+1</button>
-                    <button onclick="changeHP(5)">+5</button>
-                </div>
-            </div>
+    <!-- HOLDOUT -->
+    <div class="stat-display" id="holdout-atk">+4</div>
+    <div class="stat-display" id="holdout-dmg">2</div>
+    <button class="effect-btn infuse-toggle" id="holdout-infused" onclick="toggleInfuse('holdout')">INFUSED</button>
 
-            <div class="stat-box">
-                <h2>Temp HP</h2>
-                <div class="big-number" id="temp-hp">0</div>
+    <!-- HOLDOUT AMMO (8 boxes) -->
+    <div class="ammo-row" id="holdout-ammo">
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+    </div>
 
-                <button onclick="changeTempHP(-1)">−1</button>
-                <button onclick="changeTempHP(1)">+1</button>
-                <button onclick="changeTempHP(5)">+5</button>
-            </div>
+    <!-- BLASTER -->
+    <div class="stat-display" id="blaster-atk">+5</div>
+    <div class="stat-display" id="blaster-dmg">2</div>
+    <button class="effect-btn infuse-toggle" id="blaster-infused" onclick="toggleInfuse('blaster')">INFUSED</button>
 
-            <div class="stat-box">
-                <h2>Armor Class</h2>
-                <div class="big-number" id="armor-class">19</div>
-            </div>
+    <!-- BLASTER AMMO (14 boxes) -->
+    <div class="ammo-row" id="blaster-ammo">
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+      <div class="ammo-box" onclick="toggleAmmo(this)"></div>
+    </div>
 
-        </section>
-
-
-        <section class="abilities">
-
-            <div class="ability">
-                <strong>STR</strong>
-                <span>18</span>
-                <small>+4</small>
-            </div>
-
-            <div class="ability">
-                <strong>DEX</strong>
-                <span>14</span>
-                <small>+2</small>
-            </div>
-
-            <div class="ability">
-                <strong>CON</strong>
-                <span>16</span>
-                <small>+3</small>
-            </div>
-
-            <div class="ability">
-                <strong>INT</strong>
-                <span>10</span>
-                <small>+0</small>
-            </div>
-
-            <div class="ability">
-                <strong>WIS</strong>
-                <span>12</span>
-                <small>+1</small>
-            </div>
-
-            <div class="ability">
-                <strong>CHA</strong>
-                <span>20</span>
-                <small>+5</small>
-            </div>
-
-        </section>
+    <!-- BOTTOM COUNTERS -->
+    <div class="counter-box" id="counter-arkanian" onclick="spendCounter('arkanian')">
+      <span class="counter-val" id="arkanian-val">1/1</span>
+    </div>
 
 
-        <section class="effects">
-
-            <h2>Active Effects</h2>
-
-            <div id="effects-list">
-                <p class="no-effects">No active effects.</p>
-            </div>
-
-            <button onclick="addTestEffect()">Add Test Effect</button>
-
-        </section>
-
-    </main>
+    <div class="counter-box" id="counter-potent" onclick="spendShared()">
+      <span class="counter-val" id="potent-val">2/2</span>
+    </div>
 
 
-    <script src="script.js"></script>
+    <div class="counter-box" id="counter-biochem" onclick="spendShared()">
+      <span class="counter-val" id="biochem-val">2/2</span>
+    </div>
+    
 
+  </div>
+  <script src="script.js"></script>
 </body>
-
 </html>
